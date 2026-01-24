@@ -6,6 +6,7 @@
     "deploy": "wrangler deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
     "generate": "drizzle-kit generate",
+    "studio": "drizzle-kit studio",
     "migrate:create": "wrangler d1 migrations create",
     "migrate:local": "wrangler d1 migrations apply setupgamer --local",
     "migrate:remote": "wrangler d1 migrations apply setupgamer --remote"
