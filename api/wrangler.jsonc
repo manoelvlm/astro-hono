@@ -25,7 +25,7 @@
     {
       "binding": "setupgamer",
       "database_name": "setupgamer",
-      "database_id": "3fe26be0-3711-41c6-b249-4bb18346e2a0",
+      "database_id": "4bdfe356-33e8-4a87-8cb8-5d98a6735b93",
       "migrations_dir": "drizzle",
     },
   ],
