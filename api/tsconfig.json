@@ -3,7 +3,7 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
-    "types": ["@cloudflare/workers-types", "@types/bun"]
+    "types": ["@types/bun"]
   },
   "include": ["src/**/*.ts", "worker-configuration.d.ts"]
 }
