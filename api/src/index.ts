@@ -1,19 +1,9 @@
 import { Hono } from 'hono';
-import { createDb, movies } from '@repo/db';
+import { createDb, products } from '@repo/db';
+import productRoutes from './modules/products/products.routes';
 
-type Bindings = {
-  setupgamer: D1Database;
-};
+const app = new Hono<{ Bindings: CloudflareBindings }>();
 
-const app = new Hono<{ Bindings: Bindings }>();
-
-app.get('/', async (c) => {
-  const db = createDb(c.env.setupgamer);
-
-  // Select
-  const queryResult = await db.select().from(movies).all();
-
-  return c.json(queryResult);
-});
+app.route('/products', productRoutes);
 
 export default app;

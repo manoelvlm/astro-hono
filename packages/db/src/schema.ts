@@ -61,6 +61,7 @@ export const categories = sqliteTable('categories', {
 });
 
 export type Product = typeof products.$inferSelect;
+export type NewProduct = typeof products.$inferInsert;
 export type User = typeof users.$inferSelect;
 export type Order = typeof orders.$inferSelect;
 export type OrderItem = typeof order_items.$inferSelect;
