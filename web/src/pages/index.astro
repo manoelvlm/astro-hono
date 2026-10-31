@@ -1,17 +1,48 @@
 ---
+export const prerender = false;
 
+import ProductsSection from '../components/ProductsSection';
+import '../styles/global.css';
+
+const apiBaseUrl = (import.meta.env.PUBLIC_API_BASE_URL ?? '').replace(/\/$/, '');
+let initialProducts: any[] = [];
+
+try {
+	const url = apiBaseUrl ? `${apiBaseUrl}/products` : '/products';
+	const response = await fetch(url);
+	if (response.ok) {
+		initialProducts = await response.json();
+	}
+} catch (error) {
+	initialProducts = [];
+}
 ---
 
-<html lang="en">
+<html lang="pt-BR">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>SetupGamer | Catálogo</title>
+		<meta
+			name="description"
+			content="Produtos premium para elevar seu setup: seleções em destaque e novidades." 
+		/>
 	</head>
-	<body>
-		<h1>Hello World</h1>
+	<body class="bg-gray-950 text-slate-50">
+		<main class="min-h-screen">
+			<section class="relative overflow-hidden">
+				<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.16),transparent_58%),radial-gradient(circle_at_85%_10%,rgba(251,146,60,0.10),transparent_50%)]" />
+				<section id="produtos" class="relative mx-auto max-w-6xl px-6 py-16 md:py-20">
+				<ProductsSection
+					client:visible
+					apiBaseUrl={apiBaseUrl}
+					initialProducts={initialProducts}
+				/>
+				</section>
+			</section>
+		</main>
 	</body>
 </html>
